@@ -1,6 +1,7 @@
 {
   "resources": [
     {"id":{"name":"is_mouse_onscreen","path":"scripts/is_mouse_onscreen/is_mouse_onscreen.yy",},"order":1,},
+    {"id":{"name":"oCameraController","path":"objects/oCameraController/oCameraController.yy",},"order":3,},
     {"id":{"name":"Map","path":"scripts/Map/Map.yy",},"order":0,},
     {"id":{"name":"sMapNode","path":"sprites/sMapNode/sMapNode.yy",},"order":0,},
     {"id":{"name":"oGameController","path":"objects/oGameController/oGameController.yy",},"order":1,},
