@@ -55,4 +55,18 @@ function Map() constructor {
 			}
 		}
 	}
+	
+	static GetNodeForPosition = function(_x, _y) {
+		return instance_position(_x, _y, oMapNode);
+	}
+	
+	static GetNodeIndicesForPosition = function(_x, _y) {
+		var xpos = floor(_x / GRID_SIZE);
+		var ypos = floor(_y / GRID_SIZE);
+		
+		return {
+			x: xpos,
+			y: ypos,
+		}
+	}
 }

@@ -5,5 +5,5 @@ y = mouse_y;
 if (!is_mouse_onscreen()) {
 	hoverNode = noone;	
 } else {
-	hoverNode = instance_position(x, y, oMapNode);
+	hoverNode = global.map.GetNodeForPosition(x, y);
 }
