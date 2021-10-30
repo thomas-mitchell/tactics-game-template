@@ -11,14 +11,34 @@
 
 // Draw indices of hovered node
 if (hoverNode != noone) {
-	var hoverNodeIndicesX = 10;
-	var hoverNodeIndicesY = 10;
+	var hoverNodeTextX = 10;
+	var hoverNodeTextY = 10;
 	var indices = global.map.GetNodeIndicesForPosition(x, y);
 	
-	var hoverNodeIndicesText = "Hovernode: " + string(indices.x) + "," + string(indices.y);
+	var hoverNodeText = "Hovernode: " + string(indices.x) + "," + string(indices.y) + ": ";
+	if (hoverNode.occupant != noone) {
+		hoverNodeText += hoverNode.occupant.name;
+	} else {
+		hoverNodeText += "noone";	
+	}
 	
-	draw_set_color(c_black);
-	draw_rectangle(hoverNodeIndicesX, hoverNodeIndicesY, string_width(hoverNodeIndicesText) + hoverNodeIndicesX, string_height(hoverNodeIndicesText) + hoverNodeIndicesY, false);
-	draw_text_color(hoverNodeIndicesX, hoverNodeIndicesY, hoverNodeIndicesText, c_white, c_white, c_white, c_white, 1);
-	draw_set_color(c_white);
+	draw_label(hoverNodeTextX, hoverNodeTextY, hoverNodeText, c_white, c_black);
 }
+
+// Draw name of selected actor
+if (selectedActor != noone) {
+	var actorText = selectedActor.name;
+	
+	draw_label(10, room_height - 30, actorText, c_white, c_black);
+}
+
+
+
+
+
+
+
+
+
+
+
