@@ -6,6 +6,8 @@ function Map() constructor {
 	for (xx=0; xx < width; xx++) {
 		for (yy = 0; yy < height; yy++) {
 			cells[xx][yy] = instance_create_layer(xx * GRID_SIZE, yy * GRID_SIZE, "MapNodesLayer", oMapNode);
+			cells[xx][yy].gridX = xx;
+			cells[xx][yy].gridY = yy;
 		}
 	}
 

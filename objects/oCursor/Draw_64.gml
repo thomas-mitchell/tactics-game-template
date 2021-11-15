@@ -22,12 +22,16 @@ if (hoverNode != noone) {
 		hoverNodeText += "noone";	
 	}
 	
+	if (hoverNode.passable) {
+		hoverNodeText += " passable" + " cost = " + string(hoverNode.movementCost);
+	}
+	
 	draw_label(hoverNodeTextX, hoverNodeTextY, hoverNodeText, c_white, c_black);
 }
 
 // Draw name of selected actor
 if (selectedActor != noone) {
-	var actorText = selectedActor.name;
+	var actorText = "Selected: " + selectedActor.name;
 	
 	draw_label(10, room_height - 30, actorText, c_white, c_black);
 }
