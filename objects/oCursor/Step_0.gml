@@ -10,14 +10,18 @@ if (!is_mouse_onscreen()) {
 
 if (mouse_check_button_pressed(mb_left)) {
 	if (hoverNode.occupant != noone) {
-		selectedActor = hoverNode.occupant;	
+		selectedActor = hoverNode.occupant;
+		
+		selectedActor.actions = 2;
+		movement_range(global.map.cells[selectedActor.gridX][selectedActor.gridY], selectedActor.move, selectedActor.actions);
 	} else {
-		selectedActor = noone;	
+		selectedActor = noone;
+		wipe_nodes();
 	}
 }
 
 if (mouse_check_button_pressed(mb_right)) {
-	if (selectedActor != noone && hoverNode.occupant == noone && hoverNode.passable) {
+	if (selectedActor != noone && hoverNode.moveNode) {
 		// Clear old node
 		global.map.cells[selectedActor.gridX][selectedActor.gridY].occupant = noone;
 		
@@ -31,9 +35,22 @@ if (mouse_check_button_pressed(mb_right)) {
 		// Update new node
 		hoverNode.occupant = selectedActor;
 		
-		// Deselect actor
-		selectedActor = noone;
+		// Decrement actions
+		if (hoverNode.G > selectedActor.move) {
+			selectedActor = noone;
+			wipe_nodes();
+		} else {
+			selectedActor.actions--;
+			
+			if (selectedActor.actions > 0) {
+				movement_range(hoverNode, selectedActor.move, selectedActor.actions);	
+			} else {
+				selectedActor = noone;
+				wipe_nodes();
+			}
+		}
 	} else {
-		selectedActor = noone;	
+		selectedActor = noone;
+		wipe_nodes();
 	}
 }
